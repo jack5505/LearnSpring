@@ -6,5 +6,6 @@
     <bean class="com.example.learn.spring.demo.test.SayQuoteImpl" id="test">
         <property name="name" value="Jack"/>
     </bean>
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
     <bean class="com.example.learn.spring.demo.test.InjenctRandomAnnotationBeanPostProcessor"/>
 </beans>
