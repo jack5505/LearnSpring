@@ -3,6 +3,8 @@ package com.example.learn.spring.demo.test;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
+import javax.management.*;
+import java.lang.management.ManagementFactory;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -26,7 +28,20 @@ public class ProfilingHandlerBeanPostProcessor implements BeanPostProcessor {
         return bean;
     }
 
-    
+    public ProfilingHandlerBeanPostProcessor() {
+      MBeanServer mBeanServer =  ManagementFactory.getPlatformMBeanServer();
+        try {
+            mBeanServer.registerMBean(controller,new ObjectName("profiling","name","controller"));
+        } catch (InstanceAlreadyExistsException e) {
+            e.printStackTrace();
+        } catch (MBeanRegistrationException e) {
+            e.printStackTrace();
+        } catch (NotCompliantMBeanException e) {
+            e.printStackTrace();
+        } catch (MalformedObjectNameException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {

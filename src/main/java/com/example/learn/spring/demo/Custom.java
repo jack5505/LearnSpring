@@ -10,8 +10,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  */
 public class Custom {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ClassPathXmlApplicationContext xmlApplicationContext = new ClassPathXmlApplicationContext("context.xml");
-        xmlApplicationContext.getBean(SayQuoteImpl.class).saySomething();
+        // xmlApplicationContext.getBeanDefinitionNames() all name of Beans in debug mode can see
+        while (true){
+            Thread.sleep(100);
+            xmlApplicationContext.getBean(SayQuoteImpl.class).saySomething();
+        }
     }
 }

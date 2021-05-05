@@ -8,4 +8,5 @@
     </bean>
     <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
     <bean class="com.example.learn.spring.demo.test.InjenctRandomAnnotationBeanPostProcessor"/>
+    <bean class="com.example.learn.spring.demo.test.ProfilingHandlerBeanPostProcessor"/>
 </beans>
