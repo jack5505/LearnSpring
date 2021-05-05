@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
  *  @author Sabirov Jakhongir
  *
  */
+@Profiling
 public class SayQuoteImpl implements SayQuote {
 
     @InjectRandomInt(min = 1, max = 10)
